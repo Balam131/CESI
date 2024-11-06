@@ -15,7 +15,7 @@ class Asistencia extends Model
     ];
 
     public function alumnos() {
-        return $this->belongsToMany(Alumno::class,'cesi_pase');
+        return $this->belongsToMany(Alumno::class,'cesi_pases');
 
     }
 }
