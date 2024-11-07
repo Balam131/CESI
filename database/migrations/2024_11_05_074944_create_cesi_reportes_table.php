@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cesi_reportes', function (Blueprint $table) {
             $table->id();
             $table->string('reporte_pdf')->nullable();
-            $table->foreignId('cesi_tutores_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('cesi_tutore_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

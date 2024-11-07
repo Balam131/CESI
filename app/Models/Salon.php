@@ -25,6 +25,6 @@ class Salon extends Model
     }
 
     public function alumno(){
-        return $this->hasMany(Alumno::class);
+        return $this->hasMany(Alumno::class,'cesi_alumno_id');
     }
 }

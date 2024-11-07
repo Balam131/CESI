@@ -15,6 +15,6 @@ class Lista extends Model
     ];
 
     public function maestros(){
-        return $this->belongsTo(Maestro::class);
+        return $this->belongsTo(Maestro::class,'cesi_maestro_id');
     }
 }

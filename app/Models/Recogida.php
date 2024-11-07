@@ -17,6 +17,6 @@ class Recogida extends Model
 
 
     protected function alumnos(){
-        return $this->belongsToMany(Alumno::class);
+        return $this->belongsToMany(Alumno::class,'cesi_escogidos');
     }
 }

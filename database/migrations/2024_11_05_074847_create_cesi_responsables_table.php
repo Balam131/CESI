@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('responsable_telefono')->nullable();
             $table->string('responsable_foto')->nullable();
             $table->boolean('responsable_activacion')->default(0);
-            $table->foreignId('cesi_tutores_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('cesi_tutore_id')->constrained()->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });

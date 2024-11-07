@@ -11,11 +11,11 @@ class Reporte extends Model
     use HasFactory;
     protected $table = 'cesi_tutores';
     protected $fillable = ['reporte_pdf',
-    'cesi_tutores_id',
+    'cesi_tutore_id',
     ];
 
 
     public function tutores(){
-        return $this->belongsTo(Tutor::class);
+        return $this->belongsTo(Tutor::class,'cesi_tutore_id');
     }
 }

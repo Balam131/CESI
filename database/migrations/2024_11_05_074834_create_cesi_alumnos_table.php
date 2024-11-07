@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('alumno_nacimiento')->nullable();
             $table->string('alumno_foto')->nullable();
             $table->foreignId('cesi_salon_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('cesi_tutores_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('cesi_tutore_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

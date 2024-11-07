@@ -16,6 +16,6 @@ class UI extends Model
 
 
     public function escuelas(){
-        return $this->belongsTo(Escuela::class);
+        return $this->belongsTo(Escuela::class,'cesi_escuela_id');
     }
 }

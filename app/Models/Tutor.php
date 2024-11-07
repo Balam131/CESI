@@ -19,12 +19,12 @@ class Tutor extends Model
     ];
 
     public function alumnos(){
-        return $this->hasMany(Alumno::class);
+        return $this->hasMany(Alumno::class,'cesi_tutore_id');
     }
     public function responsables(){
-        return $this->hasMany(Responsable::class);
+        return $this->hasMany(Responsable::class,'cesi_tutore_id');
     }
     public function reportes(){
-        return $this->hasMany(Reporte::class);
+        return $this->hasMany(Reporte::class,'cesi_tutore_id');
     }
 }

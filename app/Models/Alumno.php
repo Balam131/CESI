@@ -14,24 +14,24 @@ class Alumno extends Model
     'alumno_nacimiento',
     'alumno_foto',
     'cesi_salon_id',
-    'cesi_tutores_id',
+    'cesi_tutore_id',
     ];
 
 
     public function salones(){
-        return $this->belongsTo(Salon::class);
+        return $this->belongsTo(Salon::class,'cesi_salon_id');
     }
 
     public function tutores(){
-        return $this->belongsTo(Tutor::class);
+        return $this->belongsTo(Tutor::class,'cesi_tutore_id');
     }
 
     public function recogidas(){
-        return $this->belongsToMany(Recogida::class);
+        return $this->belongsToMany(Recogida::class,'cesi_escogidos');
     }
 
     public function notificaciones(){
-        return $this->hasMany(Notificacion::class);
+        return $this->hasMany(Notificacion::class,'cesi_alumno_id');
     }
 
     public function asistencias() {

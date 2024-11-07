@@ -16,16 +16,16 @@ class Responsable extends Model
     'responsable_telefono',
     'responsable_foto',
     'responsable_activacion',
-    'cesi_tutores_id',
+    'cesi_tutore_id',
 
     ];
 
 
     public function tutores(){
-        return $this->belongsTo(Tutor::class);
+        return $this->belongsTo(Tutor::class,  'cesi_tutore_id');
     }
 
     public function sesiones(){
-        return $this->hasOne(Sesion::class);
+        return $this->hasOne(Sesion::class,'cesi_responsable_id');
     }
 }

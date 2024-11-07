@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\SalonController;
 use App\Http\Controllers\Admin\MaestroController;
+use App\Http\Controllers\Admin\ResponsableController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,3 +24,8 @@ Route::get('maestros/{maestro}', [MaestroController::class, 'show'])->name('maes
 Route::get('maestros/{maestro}/edit', [MaestroController::class, 'edit'])->name('maestros.edit');
 Route::put('/maestros/{maestro}', [MaestroController::class, 'update'])->name('maestros.update');
 Route::delete('maestros/{maestro}', [MaestroController::class, 'destroy'])->name('maestros.destroy');
+
+Route::get('responsables', [ResponsableController::class, 'index'])->name('responsables.index');
+Route::get('responsables/{responsable}/edit', [ResponsableController::class, 'edit'])->name('responsables.edit');
+Route::put('responsables/{responsable}', [ResponsableController::class, 'update'])->name('responsables.update');
+

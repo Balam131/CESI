@@ -18,6 +18,6 @@ class Sesion extends Model
     ];
 
     public function responsables(){
-        return $this->belongsTo(Responsable::class);
+        return $this->belongsTo(Responsable::class,'cesi_responsable_id');
     }
 }

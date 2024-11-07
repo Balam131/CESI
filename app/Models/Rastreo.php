@@ -17,7 +17,7 @@ class Rastreo extends Model
 
 
     public function recogidas() {
-        return $this->belongsTo(Recogida::class);
+        return $this->belongsTo(Recogida::class,'cesi_recogida_id');
 
     }
 }

@@ -16,6 +16,6 @@ class Notificacion extends Model
     'cesi_alumno_id',];
 
     public function alumnos(){
-        return $this->belongsTo(Alumno::class);
+        return $this->belongsTo(Alumno::class,'cesi_alumno_id');
     }
 }
