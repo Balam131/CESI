@@ -18,11 +18,11 @@ class Escuela extends Model
     ];
 
     public function uis(){
-        return $this->hasMany(UI::class);
+        return $this->hasMany(UI::class,'cesi_escuela_id');
     }
 
     public function salones(){
-        return $this->hasMany(Salon::class);
+        return $this->hasMany(Salon::class,'cesi_escuela_id');
     }
 
     public function administradores()

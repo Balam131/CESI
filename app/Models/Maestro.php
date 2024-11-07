@@ -18,10 +18,10 @@ class Maestro extends Model
     'maestro_foto',];
 
     public function salones(){
-        return $this->hasOne(Salon::class);
+        return $this->hasOne(Salon::class,'cesi_maestro_id');
     }
 
     public function listas(){
-        return $this->hasMany(Lista::class);
+        return $this->hasMany(Lista::class,'cesi_maestro_id');
     }
 }

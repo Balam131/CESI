@@ -22,11 +22,11 @@ class UpdateMaestroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'maestro_nombre'=>'required|max:255|nullable'.$this->maestro->id,
-            'maestro_usuario'=>'required|max:255|email|unique:cesi_maestros'.$this->maestro->id,
-            'maestro_contraseña'=>'required|max:255|password'.$this->maestro->id,
-            'maestro_telefono'=>'required|max:10'.$this->maestro->id,
-            'maestro_foto'=>'required'.$this->maestro->id,
+            'maestro_nombre' => 'required|string|max:255',
+            'maestro_usuario' => 'required|email',
+            'maestro_contraseña' => 'required|string|min:6',
+            'maestro_telefono' => 'required|nullable|string',
+            'maestro_foto' => 'required|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 

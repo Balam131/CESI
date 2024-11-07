@@ -17,14 +17,14 @@ class Salon extends Model
 
 
     public function maestros(){
-        return $this->belongsTo(Maestro::class);
+        return $this->belongsTo(Maestro::class,'cesi_maestro_id');
     }
 
     public function escuelas(){
-        return $this->belongsTo(Escuela::class);
+        return $this->belongsTo(Escuela::class,'cesi_escuela_id');
     }
 
-    public function alumnos(){
+    public function alumno(){
         return $this->hasMany(Alumno::class);
     }
 }
