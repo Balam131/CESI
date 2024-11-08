@@ -40,7 +40,7 @@ class MaestroController extends Controller
             'maestro_nombre' => 'required|string|max:255',
             'maestro_usuario' => 'required|email',
             'maestro_contraseña' => 'required|string|min:6',
-            'maestro_telefono' => 'nullable|string',
+            'maestro_telefono' => 'nullable|regex:/^[0-9]{10,11}$/',
             'maestro_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -86,8 +86,7 @@ class MaestroController extends Controller
         $request->validate([
             'maestro_nombre' => 'required|string|max:255',
             'maestro_usuario' => 'required|email',
-            'maestro_contraseña' => 'required|string|min:6',
-            'maestro_telefono' => 'nullable|string',
+            'maestro_telefono' => 'nullable|regex:/^[0-9]{10,11}$/',
             'maestro_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

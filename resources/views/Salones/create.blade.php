@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Maestros</title>
+    <title>Crear Salón</title>
 
-    <!-- Fonts -->
+    <!-- Fonts and Styles -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -21,61 +21,75 @@
 </head>
 
 <body class="font-sans antialiased">
+    <div class="container mt-4">
+        <h3 class="mb-4">Crear Salón</h3>
 
-    <main>
-        <form action="{{ route('salones.store') }}" method="POST">
-            @csrf
+        <main>
+            <form action="{{ route('salones.store') }}" method="POST">
+                @csrf
 
-            <div class="form-group">
-                <label for="salon_grado">Grado</label>
-                <input type="text" class="form-control" id="salon_grado" name="salon_grado"
-                    value="{{ old('salon_grado') }}">
-            </div>
+                <div class="row g-3">
+                    <!-- Grado -->
+                    <div class="col-md-6">
+                        <label for="salon_grado" class="form-label">Grado</label>
+                        <input type="text" class="form-control" id="salon_grado" name="salon_grado"
+                            value="{{ old('salon_grado') }}">
+                    </div>
 
-            <div class="form-group">
-                <label for="salon_grupo">Grupo</label>
-                <input type="text" class="form-control" id="salon_grupo" name="salon_grupo"
-                    value="{{ old('salon_grupo') }}">
-            </div>
+                    <!-- Grupo -->
+                    <div class="col-md-6">
+                        <label for="salon_grupo" class="form-label">Grupo</label>
+                        <input type="text" class="form-control" id="salon_grupo" name="salon_grupo"
+                            value="{{ old('salon_grupo') }}">
+                    </div>
 
-            <div class="form-group">
-                <label for="cesi_escuela_id">Escuela</label>
-                <select name="cesi_escuela_id" id="cesi_escuela_id" class="form-control" required>
-                    @foreach ($escuelas as $escuela)
-                        <option value="{{ $escuela->id }}"
-                            {{ old('cesi_escuela_id') == $escuela->id ? 'selected' : '' }}>
-                            {{ $escuela->escuela_nombre }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+                    <!-- Escuela -->
+                    <div class="col-md-6">
+                        <label for="cesi_escuela_id" class="form-label">Escuela</label>
+                        <select name="cesi_escuela_id" id="cesi_escuela_id" class="form-select" required>
+                            <option selected disabled>Seleccione una escuela</option>
+                            @foreach ($escuelas as $escuela)
+                                <option value="{{ $escuela->id }}"
+                                    {{ old('cesi_escuela_id') == $escuela->id ? 'selected' : '' }}>
+                                    {{ $escuela->escuela_nombre }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
+                    <!-- Maestro -->
+                    <div class="col-md-6">
+                        <label for="cesi_maestro_id" class="form-label">Maestro</label>
+                        <select class="form-select" id="cesi_maestro_id" name="cesi_maestro_id">
+                            <option selected disabled>Seleccione un maestro</option>
+                            @foreach ($maestros as $maestro)
+                                <option value="{{ $maestro->id }}"
+                                    {{ old('cesi_maestro_id') == $maestro->id ? 'selected' : '' }}>
+                                    {{ $maestro->maestro_nombre }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="cesi_maestro_id">Maestro</label>
-                <select class="form-control" id="cesi_maestro_id" name="cesi_maestro_id">
-                    @foreach ($maestros as $maestro)
-                        <option value="{{ $maestro->id }}"
-                            {{ old('cesi_maestro_id') == $maestro->id ? 'selected' : '' }}>
-                            {{ $maestro->maestro_nombre }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+                    <!-- Botón de envío -->
+                    <div class="mt-3 col-12 text-end">
+                        <button type="submit" class="btn btn-primary">Crear Salón</button>
+                    </div>
+                </div>
+            </form>
 
-            <button type="submit" class="btn btn-primary">Crear Salón</button>
-        </form>
-
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </main>
-
+            <!-- Errores -->
+            @if ($errors->any())
+                <div class="mt-4 alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </main>
+    </div>
 </body>
+
+</html>

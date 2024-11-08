@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>responsables</title>
+    <title>Editar Responsable</title>
 
-    <!-- Fonts -->
+    <!-- Fonts and Styles -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -22,62 +22,70 @@
 
 <body class="font-sans antialiased">
 
-    <main>
-        <h3>
-            Editar responsable <i> {{ $responsable->responsable_nombre }}</i>
+    <main class="container mt-4">
+        <h3 class="mb-4">
+            Editar responsable <i>{{ $responsable->responsable_nombre }}</i>
         </h3>
-        <form action="{{ route('responsables.update', ['responsable' => $responsable->id]) }}" method="POST"
-            enctype="multipart/form-data">
 
+        <form action="{{ route('responsables.update', ['responsable' => $responsable->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="row">
-                <div class="col-sm-12">
+
+            <div class="row g-3">
+                <!-- Nombre -->
+                <div class="col-md-12">
                     <label for="InputNombre" class="form-label">* Nombre de responsable</label>
                     <input type="text" name="responsable_nombre" id="InputNombre" class="form-control"
                         placeholder="..." value="{{ old('responsable_nombre', $responsable->responsable_nombre) }}">
                 </div>
-                <div class="col-sm-4">
+
+                <!-- Usuario -->
+                <div class="col-md-4">
                     <label for="InputUsuario" class="form-label">Usuario</label>
                     <input type="email" name="responsable_usuario" id="InputUsuario" class="form-control"
                         placeholder="..." value="{{ old('responsable_usuario', $responsable->responsable_usuario) }}">
-
                 </div>
 
-                <div class="col-sm-4">
+                <!-- Contraseña -->
+                <div class="col-md-4">
                     <label for="InputPassword" class="form-label">Contraseña</label>
                     <input type="password" name="responsable_contraseña" id="InputPassword" class="form-control"
-                        placeholder="..."
-                        value="{{ old('responsable_contraseña', $responsable->responsable_contraseña) }}">
-
+                        placeholder="Ingrese una nueva contraseña (dejar vacío si no desea cambiarla)">
                 </div>
 
-                <div class="col-sm-4">
-                    <label for="InputTelefono" class="form-label">Telefono</label>
+                <!-- Teléfono -->
+                <div class="col-md-4">
+                    <label for="InputTelefono" class="form-label">Teléfono</label>
                     <input type="tel" name="responsable_telefono" id="InputTelefono" class="form-control"
                         placeholder="..." value="{{ old('responsable_telefono', $responsable->responsable_telefono) }}">
-
                 </div>
 
-                <div class="col-sm-4">
+                <!-- Foto del responsable -->
+                <div class="col-md-4">
                     <label for="InputFoto" class="form-label">Foto del responsable</label>
-                    <input type="file" name="responsable_foto" id="InputFoto" class="form-control" accept="image/*"
-                        value="{{ old('responsable_foto', $responsable->responsable_foto) }}">
-
+                    <!-- Mostrar la foto actual si existe -->
+                    @if ($responsable->responsable_foto)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $responsable->responsable_foto) }}"
+                                alt="Foto del responsable" class="img-thumbnail" style="max-width: 100px;">
+                        </div>
+                    @endif
+                    <input type="file" name="responsable_foto" id="InputFoto" class="form-control" accept="image/*">
                 </div>
 
-                <div class="my-2 col-sm-12 text-end">
+                <!-- Botón de envío -->
+                <div class="col-md-12 text-end">
                     <button type="submit" class="btn btn-primary">
                         Editar
                     </button>
-
                 </div>
             </div>
         </form>
 
+        <!-- Errores -->
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="mt-3 alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -88,3 +96,5 @@
     </main>
 
 </body>
+
+</html>

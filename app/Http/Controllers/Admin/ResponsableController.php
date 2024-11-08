@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateResponsableRequest;
+
 use App\Models\Responsable;
 use Illuminate\Http\Request;
 
@@ -65,8 +65,7 @@ class ResponsableController extends Controller
         $request->validate([
             'responsable_nombre' => 'required|string|max:255',
             'responsable_usuario' => 'required|email',
-            'responsable_contraseña' => 'required|string|min:6',
-            'responsable_telefono' => 'nullable|string',
+            'responsable_telefono' => 'nullable|regex:/^[0-9]{10,11}$/',
             'responsable_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

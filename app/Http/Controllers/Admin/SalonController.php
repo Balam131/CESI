@@ -41,8 +41,8 @@ class SalonController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'salon_grado' => 'nullable|string|max:255',
-            'salon_grupo' => 'nullable|string|max:255',
+            'salon_grado' => 'nullable|string|max:2',
+            'salon_grupo' => 'nullable|string|max:2',
             'cesi_escuela_id' => 'required|exists:cesi_escuelas,id',
             'cesi_maestro_id' => 'required|exists:cesi_maestros,id',
         ]);
@@ -66,8 +66,8 @@ class SalonController extends Controller
     public function update(Request $request, Salon $salon)
     {
         $request->validate([
-            'salon_grado' => 'nullable|string|max:255',
-            'salon_grupo' => 'nullable|string|max:255',
+            'salon_grado' => 'nullable|string|max:2',
+            'salon_grupo' => 'nullable|string|max:2',
             'cesi_escuela_id' => 'required|exists:cesi_escuelas,id',
             'cesi_maestro_id' => 'required|exists:cesi_maestros,id',
         ]);
